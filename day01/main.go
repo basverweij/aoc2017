@@ -11,5 +11,7 @@ func main() {
 
 	s := strings.TrimSpace(string(input))
 
-	fmt.Println(captcha(s))
+	fmt.Printf("Puzzle 1: %d\n", captcha(s))
+
+	fmt.Printf("Puzzle 2: %d\n", captcha2(s))
 }
