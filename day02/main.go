@@ -16,7 +16,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Print(d)
+	log.Printf("checksum 1: %d", checksum(d))
 
-	log.Printf("checksum: %d", checksum(d))
+	log.Printf("checksum 2: %d", checksum2(d))
 }
