@@ -11,7 +11,7 @@ func TestValidateAll(t *testing.T) {
 		passphrase{"aa", "bb", "cc", "dd", "ee"},
 		passphrase{"aa", "bb", "cc", "dd", "aa"},
 		passphrase{"aa", "bb", "cc", "dd", "aaa"},
-	}))
+	}, isValid))
 }
 
 func TestIsValid(t *testing.T) {
