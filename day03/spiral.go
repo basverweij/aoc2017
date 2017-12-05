@@ -4,15 +4,6 @@ type coords struct {
 	x, y int
 }
 
-var (
-	sides = []coords{
-		{1, 0},
-		{0, 1},
-		{-1, 0},
-		{0, -1},
-	}
-)
-
 func spiralCoords(n int) coords {
 	if n == 1 {
 		return coords{}
@@ -38,9 +29,22 @@ func spiralCoords(n int) coords {
 	side := n / (size / 4)
 	idx := n % (size / 4)
 
+	return newCoords(ring, side, idx)
+}
+
+var (
+	sides = []coords{
+		{0, -1},
+		{-1, 0},
+		{0, 1},
+		{1, 0},
+	}
+)
+
+func newCoords(ring, side, idx int) coords {
 	return coords{
+		sides[side].x*(idx+1-ring) - sides[side].y*ring,
 		sides[side].x*ring + sides[side].y*(idx+1-ring),
-		sides[side].y*ring + sides[side].x*(idx+1-ring),
 	}
 }
 

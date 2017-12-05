@@ -8,8 +8,8 @@ import (
 
 func TestSpiralCoords(t *testing.T) {
 	assert.Equal(t, coords{0, 0}, spiralCoords(1))
-	assert.Equal(t, coords{2, 1}, spiralCoords(12))
-	assert.Equal(t, coords{0, -2}, spiralCoords(23))
+	assert.Equal(t, coords{2, -1}, spiralCoords(12))
+	assert.Equal(t, coords{0, 2}, spiralCoords(23))
 }
 
 func TestSpiralsize(t *testing.T) {
