@@ -7,7 +7,10 @@ import (
 )
 
 func TestRedistribute(t *testing.T) {
-	assert.Equal(t, 5, redistribute([]int{0, 2, 7, 0}))
+	steps, loop := redistribute([]int{0, 2, 7, 0})
+
+	assert.Equal(t, 5, steps)
+	assert.Equal(t, 4, loop)
 }
 
 func TestMax(t *testing.T) {

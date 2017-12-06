@@ -2,10 +2,8 @@ package main
 
 import "fmt"
 
-func redistribute(banks []int) int {
-	var n int
-
-	seen := make(map[string]struct{})
+func redistribute(banks []int) (n, l int) {
+	seen := make(map[string]int)
 
 	for n = 1; ; n++ {
 		max, bank := max(banks)
@@ -21,14 +19,13 @@ func redistribute(banks []int) int {
 		}
 
 		s := fmt.Sprintf("%#v", banks)
-		if _, found := seen[s]; found {
-			break
+		if nSeen, found := seen[s]; found {
+			l = n - nSeen
+			return
 		}
 
-		seen[s] = struct{}{}
+		seen[s] = n
 	}
-
-	return n
 }
 
 func max(banks []int) (max, bank int) {
