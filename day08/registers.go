@@ -1,8 +1,13 @@
 package main
 
-import "math"
+import (
+	"math"
+)
 
-type registers map[string]int
+type registers struct {
+	values map[string]int
+	maxReg int
+}
 
 type operatorFunc func(int, int) bool
 
@@ -15,8 +20,15 @@ var operators = map[string]operatorFunc{
 	"!=": func(register, amount int) bool { return register != amount },
 }
 
-func (r registers) apply(i *instruction) {
-	if !operators[i.ConditionOperator](r[i.ConditionRegister], i.ConditionAmount) {
+func newRegisters() *registers {
+	return &registers{
+		values: make(map[string]int),
+		maxReg: math.MinInt32,
+	}
+}
+
+func (r *registers) apply(i *instruction) {
+	if !operators[i.ConditionOperator](r.values[i.ConditionRegister], i.ConditionAmount) {
 		return
 	}
 
@@ -25,17 +37,26 @@ func (r registers) apply(i *instruction) {
 		amount = -amount
 	}
 
-	r[i.Register] += amount
+	r.values[i.Register] += amount
+
+	max := r.largestValue()
+	if max > r.maxReg {
+		r.maxReg = max
+	}
 }
 
-func (r registers) largestValue() int {
+func (r *registers) largestValue() int {
 	max := math.MinInt32
 
-	for _, v := range r {
+	for _, v := range r.values {
 		if v > max {
 			max = v
 		}
 	}
 
 	return max
+}
+
+func (r *registers) largestValueEver() int {
+	return r.maxReg
 }

@@ -10,7 +10,7 @@ import (
 func TestApply(t *testing.T) {
 	is, _ := parse(bytes.NewBufferString(input))
 
-	regs := make(registers)
+	regs := newRegisters()
 
 	for _, i := range is {
 		regs.apply(i)
