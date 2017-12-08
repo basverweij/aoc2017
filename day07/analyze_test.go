@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -34,4 +35,29 @@ func TestRootShouldReturnRoot(t *testing.T) {
 	assert.Nil(t, err)
 
 	assert.Equal(t, &program{"a", 1, []string{"b", "c"}}, root)
+}
+
+var input = `pbga (66)
+xhth (57)
+ebii (61)
+havc (66)
+ktlj (57)
+fwft (72) -> ktlj, cntj, xhth
+qoyq (66)
+padx (45) -> pbga, havc, qoyq
+tknk (41) -> ugml, padx, fwft
+jptl (61)
+ugml (68) -> gyxo, ebii, jptl
+gyxo (61)
+cntj (57)`
+
+func TestUnbalanced(t *testing.T) {
+	programs, err := parse(bytes.NewBufferString(input))
+	assert.Nil(t, err)
+
+	unb, w, err := unbalanced(programs)
+	assert.Nil(t, err)
+
+	assert.Equal(t, "ugml", unb.Name)
+	assert.Equal(t, 60, w)
 }
