@@ -1,7 +1,8 @@
 package main
 
-func scan(s string) *group {
+func scan(s string) (*group, int) {
 	root := newGroup(nil)
+	garbageCount := 0
 
 	current := root
 	inGarbage := false
@@ -16,6 +17,8 @@ func scan(s string) *group {
 			if s[i] == '!' {
 				// escape: skip next character
 				i++
+			} else {
+				garbageCount++
 			}
 
 			continue
@@ -37,5 +40,5 @@ func scan(s string) *group {
 		}
 	}
 
-	return root
+	return root, garbageCount
 }
