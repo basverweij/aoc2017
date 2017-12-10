@@ -1,9 +1,13 @@
 package main
 
 func knot(size int, lengths []int) list {
-	l := newList(size)
+	l, _, _ := knotWithParams(newList(size), 0, 0, lengths)
+	return l
+}
 
-	pos, skip := 0, 0
+func knotWithParams(l list, pos, skip int, lengths []int) (list, int, int) {
+	size := len(l)
+
 	for _, length := range lengths {
 		l.Reverse(pos, length)
 
@@ -11,5 +15,5 @@ func knot(size int, lengths []int) list {
 		skip++
 	}
 
-	return l
+	return l, pos, skip
 }
