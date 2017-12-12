@@ -5,14 +5,17 @@ type cubecoords struct {
 	x, y, z int
 }
 
-func cubeCoordsFromMoves(dirs ...direction) *cubecoords {
+func cubeCoordsFromMoves(dirs ...direction) (*cubecoords, int) {
 	c := &cubecoords{}
+	maxDistance := 0
 
 	for _, dir := range dirs {
 		c.move(dir)
+
+		maxDistance = max(maxDistance, c.distance())
 	}
 
-	return c
+	return c, maxDistance
 }
 
 var moves = map[direction][3]int{
