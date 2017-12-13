@@ -6,48 +6,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestLayerWithRange1ShouldNotAdvance(t *testing.T) {
-	l := &layer{rng: 1}
-	assert.Equal(t, 0, l.scanner)
-
-	l.advance()
-	assert.Equal(t, 0, l.scanner)
-}
-
-func TestLayerWithRange2ShouldAdvance(t *testing.T) {
-	l := &layer{rng: 2}
-	assert.Equal(t, 0, l.scanner)
-
-	l.advance()
-	assert.Equal(t, 1, l.scanner)
-
-	l.advance()
-	assert.Equal(t, 0, l.scanner)
-
-	l.advance()
-	assert.Equal(t, 1, l.scanner)
-}
-
-func TestLayerWithRange3ShouldAdvance(t *testing.T) {
-	l := &layer{rng: 3}
-	assert.Equal(t, 0, l.scanner)
-
-	l.advance()
-	assert.Equal(t, 1, l.scanner)
-
-	l.advance()
-	assert.Equal(t, 2, l.scanner)
-
-	l.advance()
-	assert.Equal(t, 1, l.scanner)
-
-	l.advance()
-	assert.Equal(t, 0, l.scanner)
-
-	l.advance()
-	assert.Equal(t, 1, l.scanner)
-}
-
 var testInput = map[int]int{
 	0: 3,
 	1: 2,

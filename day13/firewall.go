@@ -3,6 +3,7 @@ package main
 type firewall struct {
 	depth  int
 	layers map[int]*layer
+	t      int
 }
 
 func newFirewall(depthsAndRanges map[int]int) *firewall {
@@ -12,7 +13,7 @@ func newFirewall(depthsAndRanges map[int]int) *firewall {
 	}
 
 	for d, r := range depthsAndRanges {
-		f.layers[d] = &layer{rng: r}
+		f.layers[d] = &layer{rng: r, mod: r*2 - 2}
 
 		if d > f.depth {
 			f.depth = d
@@ -23,9 +24,7 @@ func newFirewall(depthsAndRanges map[int]int) *firewall {
 }
 
 func (f *firewall) advance() {
-	for _, l := range f.layers {
-		l.advance()
-	}
+	f.t++
 }
 
 func (f *firewall) scanner(depth int) int {
@@ -34,31 +33,15 @@ func (f *firewall) scanner(depth int) int {
 		return -1
 	}
 
-	return l.scanner
+	s := f.t % l.mod
+	if s < l.rng {
+		return s
+	}
+
+	return l.mod - s
 }
 
 type layer struct {
-	rng     int
-	scanner int
-	forward bool
-}
-
-func (l *layer) advance() {
-	if l.rng == 1 {
-		return
-	}
-
-	if l.forward {
-		l.scanner++
-		if l.scanner == l.rng {
-			l.forward = false
-			l.scanner = l.rng - 2
-		}
-	} else {
-		l.scanner--
-		if l.scanner < 0 {
-			l.forward = true
-			l.scanner = 1
-		}
-	}
+	rng int
+	mod int
 }
