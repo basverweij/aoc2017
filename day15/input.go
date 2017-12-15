@@ -9,3 +9,8 @@ var (
 	inputGenA = 722
 	inputGenB = 354
 )
+
+var (
+	multiplesGenA = 4
+	multiplesGenB = 8
+)
