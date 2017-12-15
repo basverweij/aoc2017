@@ -1,6 +1,6 @@
-package main
+package day10
 
-func knot(size int, lengths []int) list {
+func Knot(size int, lengths []int) list {
 	l, _, _ := knotWithParams(newList(size), 0, 0, lengths)
 	return l
 }

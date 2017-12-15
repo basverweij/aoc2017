@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/basverweij/aoc2017/day10"
 )
 
 func main() {
@@ -11,11 +13,11 @@ func main() {
 }
 
 func puzzle1() int {
-	l := knot(256, input)
+	l := day10.Knot(256, input)
 
 	return l[0] * l[1]
 }
 
 func puzzle2() string {
-	return hash(256, inputText)
+	return day10.Hash(256, inputText)
 }

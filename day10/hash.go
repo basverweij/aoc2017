@@ -1,4 +1,4 @@
-package main
+package day10
 
 import "encoding/hex"
 
@@ -6,7 +6,7 @@ var lengthsSuffix = []int{17, 31, 73, 47, 23}
 
 const rounds = 64
 
-func hash(size int, input []byte) string {
+func Hash(size int, input []byte) string {
 	lengths := make([]int, len(input)+len(lengthsSuffix))
 	for i, b := range input {
 		lengths[i] = int(b)
