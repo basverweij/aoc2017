@@ -21,7 +21,7 @@ func puzzle2() string {
 	l := newLine(16)
 
 	// 1000000000
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < 20000; i++ {
 		dance(l, moves)
 	}
 

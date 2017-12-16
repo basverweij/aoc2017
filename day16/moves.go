@@ -19,14 +19,15 @@ func (s *spin) String() string {
 }
 
 func (s *spin) perform(l *line) {
-	cutoff := len(l.d) - s.size
+	cutoff := len(l.dancers) - s.size
 
-	for i, idx := range l.d {
-		if idx < cutoff {
-			l.d[i] += s.size
-		} else {
-			l.d[i] -= cutoff
-		}
+	copy(l.dancersSwap[:s.size], l.dancers[cutoff:])
+	copy(l.dancersSwap[s.size:], l.dancers[:cutoff])
+
+	l.dancers, l.dancersSwap = l.dancersSwap, l.dancers
+
+	for i, d := range l.dancers {
+		d.pos = i
 	}
 }
 
@@ -43,18 +44,11 @@ func (e *exchange) String() string {
 }
 
 func (e *exchange) perform(l *line) {
-	idxA, idxB := 0, 0
-	for i, pos := range l.d {
-		if pos == e.posA {
-			idxA = i
-		}
+	// switch positions
+	l.dancers[e.posA].pos, l.dancers[e.posB].pos = l.dancers[e.posB].pos, l.dancers[e.posA].pos
 
-		if pos == e.posB {
-			idxB = i
-		}
-	}
-
-	l.d[idxA], l.d[idxB] = l.d[idxB], l.d[idxA]
+	// switch dancers
+	l.dancers[e.posA], l.dancers[e.posB] = l.dancers[e.posB], l.dancers[e.posA]
 }
 
 type partner struct {
@@ -70,5 +64,13 @@ func (p *partner) String() string {
 }
 
 func (p *partner) perform(l *line) {
-	l.d[p.nameA], l.d[p.nameB] = l.d[p.nameB], l.d[p.nameA]
+	// get positions
+	posA := l.byName[p.nameA].pos
+	posB := l.byName[p.nameB].pos
+
+	// switch positions
+	l.dancers[posA].pos, l.dancers[posB].pos = l.dancers[posB].pos, l.dancers[posA].pos
+
+	// switch dancers
+	l.dancers[posA], l.dancers[posB] = l.dancers[posB], l.dancers[posA]
 }

@@ -1,23 +1,36 @@
 package main
 
+type dancer struct {
+	name int
+	pos  int
+}
+
 type line struct {
-	// holds the positions of the dancers
-	d []int
+	byName      []*dancer
+	dancers     []*dancer
+	dancersSwap []*dancer
 }
 
 func newLine(size int) *line {
-	d := make([]int, size)
-	for i := range d {
-		d[i] = i
+	l := &line{
+		dancers:     make([]*dancer, size),
+		dancersSwap: make([]*dancer, size),
+		byName:      make([]*dancer, size),
 	}
 
-	return &line{d}
+	for i := size - 1; i >= 0; i-- {
+		l.dancers[i] = &dancer{name: i, pos: i}
+		l.byName[i] = l.dancers[i]
+	}
+
+	return l
 }
 
 func (l *line) String() string {
-	b := make([]byte, len(l.d))
-	for i, d := range l.d {
-		b[d] = 'a' + byte(i)
+	b := make([]byte, len(l.dancers))
+
+	for i, d := range l.dancers {
+		b[i] = 'a' + byte(d.name)
 	}
 
 	return string(b)
