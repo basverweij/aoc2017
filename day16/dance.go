@@ -1,11 +1,7 @@
 package main
 
-func dance(size int, moves []move) *line {
-	l := newLine(size)
-
+func dance(l *line, moves []move) {
 	for _, m := range moves {
 		m.perform(l)
 	}
-
-	return l
 }

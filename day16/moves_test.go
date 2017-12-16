@@ -22,7 +22,7 @@ func TestPerformSpin(t *testing.T) {
 
 	s.perform(l)
 
-	assert.Equal(t, []byte{'e', 'a', 'b', 'c', 'd'}, l.d)
+	assert.Equal(t, "eabcd", l.String())
 }
 
 func TestNewExchange(t *testing.T) {
@@ -40,7 +40,7 @@ func TestPerformExchange(t *testing.T) {
 	l := newLine(5)
 	e.perform(l)
 
-	assert.Equal(t, []byte{'a', 'b', 'c', 'e', 'd'}, l.d)
+	assert.Equal(t, "abced", l.String())
 }
 
 func TestNewPartner(t *testing.T) {
@@ -59,5 +59,5 @@ func TestPerformPartner(t *testing.T) {
 
 	p.perform(l)
 
-	assert.Equal(t, []byte{'a', 'd', 'c', 'b', 'e'}, l.d)
+	assert.Equal(t, "adcbe", l.String())
 }

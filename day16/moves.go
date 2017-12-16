@@ -19,8 +19,15 @@ func (s *spin) String() string {
 }
 
 func (s *spin) perform(l *line) {
-	n := len(l.d)
-	l.d = append(l.d[n-s.size:], l.d[0:n-s.size]...)
+	cutoff := len(l.d) - s.size
+
+	for i, idx := range l.d {
+		if idx < cutoff {
+			l.d[i] += s.size
+		} else {
+			l.d[i] -= cutoff
+		}
+	}
 }
 
 type exchange struct {
@@ -36,32 +43,32 @@ func (e *exchange) String() string {
 }
 
 func (e *exchange) perform(l *line) {
-	l.d[e.posA], l.d[e.posB] = l.d[e.posB], l.d[e.posA]
-}
-
-type partner struct {
-	nameA, nameB byte
-}
-
-func newPartner(nameA, nameB byte) *partner {
-	return &partner{nameA, nameB}
-}
-
-func (p *partner) String() string {
-	return fmt.Sprintf("p%s/%s", string(p.nameA), string(p.nameB))
-}
-
-func (p *partner) perform(l *line) {
-	posA, posB := 0, 0
-	for i, n := range l.d {
-		if n == p.nameA {
-			posA = i
+	idxA, idxB := 0, 0
+	for i, pos := range l.d {
+		if pos == e.posA {
+			idxA = i
 		}
 
-		if n == p.nameB {
-			posB = i
+		if pos == e.posB {
+			idxB = i
 		}
 	}
 
-	l.d[posA], l.d[posB] = l.d[posB], l.d[posA]
+	l.d[idxA], l.d[idxB] = l.d[idxB], l.d[idxA]
+}
+
+type partner struct {
+	nameA, nameB int
+}
+
+func newPartner(nameA, nameB byte) *partner {
+	return &partner{int(nameA - 'a'), int(nameB - 'a')}
+}
+
+func (p *partner) String() string {
+	return fmt.Sprintf("p%s/%s", string(p.nameA+'a'), string(p.nameB+'a'))
+}
+
+func (p *partner) perform(l *line) {
+	l.d[p.nameA], l.d[p.nameB] = l.d[p.nameB], l.d[p.nameA]
 }

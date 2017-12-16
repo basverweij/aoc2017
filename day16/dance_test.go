@@ -7,11 +7,17 @@ import (
 )
 
 func TestDance(t *testing.T) {
-	l := dance(5, []move{
+	l := newLine(5)
+
+	moves := []move{
 		newSpin(1),
 		newExchange(3, 4),
 		newPartner('e', 'b'),
-	})
+	}
 
-	assert.Equal(t, []byte{'b', 'a', 'e', 'd', 'c'}, l.d)
+	dance(l, moves)
+	assert.Equal(t, "baedc", l.String())
+
+	dance(l, moves)
+	assert.Equal(t, "ceadb", l.String())
 }
