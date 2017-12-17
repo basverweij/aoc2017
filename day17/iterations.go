@@ -1,13 +1,13 @@
 package main
 
-func iterations(b *buf, iterationCount, moveAmount int) int {
+type buffer interface {
+	move(int)
+	insert(int)
+}
+
+func iterations(b buffer, iterationCount, moveAmount int) {
 	for i := 1; i <= iterationCount; i++ {
 		b.move(moveAmount)
 		b.insert(i)
 	}
-
-	// get value after last insert
-	b.move(1)
-
-	return b.d[b.pos]
 }

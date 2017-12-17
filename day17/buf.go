@@ -17,7 +17,7 @@ func (b *buf) move(amount int) {
 func (b *buf) insert(val int) {
 	b.pos++
 
-	copy(b.d[b.pos+1:], b.d[b.pos:b.len])
+	copy(b.d[b.pos+1:b.len+1], b.d[b.pos:b.len])
 	b.d[b.pos] = val
 
 	b.len++
