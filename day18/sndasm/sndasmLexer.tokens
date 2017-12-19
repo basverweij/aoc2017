@@ -1,0 +1,17 @@
+Snd=1
+Rcv=2
+Set=3
+Add=4
+Mul=5
+Mod=6
+Jgz=7
+Reg=8
+Value=9
+WS=10
+'snd'=1
+'rcv'=2
+'set'=3
+'add'=4
+'mul'=5
+'mod'=6
+'jgz'=7
