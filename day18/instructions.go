@@ -6,15 +6,13 @@ type value func(executable) int
 
 func newSnd(value value) instruction {
 	return func(x executable) {
-		x.sound(value(x))
+		x.send(value(x))
 	}
 }
 
-func newRcv(value value) instruction {
+func newRcv(reg string) instruction {
 	return func(x executable) {
-		if value(x) != 0 {
-			x.recover()
-		}
+		x.set(reg, x.receive())
 	}
 }
 

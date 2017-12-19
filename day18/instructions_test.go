@@ -12,39 +12,28 @@ func testValue(value int) value {
 	}
 }
 
+func createProgram(instrs ...instruction) *program {
+	chan0 := make(chan int, 100)
+	return newProgram(0, instrs, chan0, chan0)
+}
+
 func TestSnd(t *testing.T) {
+	p := createProgram()
+
 	s := newSnd(testValue(1))
-
-	p := newProgram(nil)
 	s(p)
-	p.recover()
-
-	isRecovered, freq := p.isRecovered()
-	assert.True(t, isRecovered)
-	assert.Equal(t, 1, freq)
 }
 
 func TestRcv(t *testing.T) {
-	p := newProgram(nil)
-	p.sound(1)
+	p := createProgram()
+	p.send(1)
 
-	r := newRcv(testValue(0))
+	r := newRcv("a")
 	r(p)
-
-	isRecovered, freq := p.isRecovered()
-	assert.False(t, isRecovered)
-	assert.Equal(t, 0, freq)
-
-	r = newRcv(testValue(1))
-	r(p)
-
-	isRecovered, freq = p.isRecovered()
-	assert.True(t, isRecovered)
-	assert.Equal(t, 1, freq)
 }
 
 func TestSet(t *testing.T) {
-	p := newProgram(nil)
+	p := createProgram()
 	p.set("a", 1)
 	assert.Equal(t, 1, p.get("a"))
 
@@ -55,7 +44,7 @@ func TestSet(t *testing.T) {
 }
 
 func TestAdd(t *testing.T) {
-	p := newProgram(nil)
+	p := createProgram()
 	p.set("a", 1)
 	assert.Equal(t, 1, p.get("a"))
 
@@ -66,7 +55,7 @@ func TestAdd(t *testing.T) {
 }
 
 func TestMul(t *testing.T) {
-	p := newProgram(nil)
+	p := createProgram()
 	p.set("a", 2)
 	assert.Equal(t, 2, p.get("a"))
 
@@ -77,7 +66,7 @@ func TestMul(t *testing.T) {
 }
 
 func TestMod(t *testing.T) {
-	p := newProgram(nil)
+	p := createProgram()
 	p.set("a", 3)
 	assert.Equal(t, 3, p.get("a"))
 
@@ -88,7 +77,7 @@ func TestMod(t *testing.T) {
 }
 
 func TestJgz(t *testing.T) {
-	p := newProgram(nil)
+	p := createProgram()
 	assert.Equal(t, 0, p.pc)
 
 	j := newJgz(testValue(-1), testValue(2))

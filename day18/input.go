@@ -82,6 +82,18 @@ func (l *instructionListener) EnterRegOrValue(ctx *sndasm.RegOrValueContext) {
 	}
 }
 
+func (l *instructionListener) ExitUnaryRegExpression(ctx *sndasm.UnaryRegExpressionContext) {
+	if l.reg == "" {
+		panic("reg must be non-empty for binary reg expression")
+	}
+
+	instrCtx := ctx.UnaryRegInstruction().(*sndasm.UnaryRegInstructionContext)
+
+	if instrCtx.Rcv() != nil {
+		l.instr = newRcv(l.reg)
+	}
+}
+
 func (l *instructionListener) ExitUnaryExpression(ctx *sndasm.UnaryExpressionContext) {
 	if l.val == nil {
 		panic("value must be non-nil for unary expression")
@@ -91,8 +103,6 @@ func (l *instructionListener) ExitUnaryExpression(ctx *sndasm.UnaryExpressionCon
 
 	if instrCtx.Snd() != nil {
 		l.instr = newSnd(l.val)
-	} else if instrCtx.Rcv() != nil {
-		l.instr = newRcv(l.val)
 	}
 }
 

@@ -7,12 +7,14 @@ import (
 )
 
 func TestNewProgram(t *testing.T) {
-	p := newProgram(nil)
+	p := createProgram()
 	assert.NotNil(t, p)
+
+	assert.Equal(t, "0@000 - map[p:0] (0)", p.String())
 }
 
 func TestProgramRegs(t *testing.T) {
-	p := newProgram(nil)
+	p := createProgram()
 
 	assert.Equal(t, 0, p.get("a"))
 
@@ -20,23 +22,18 @@ func TestProgramRegs(t *testing.T) {
 	assert.Equal(t, 1, p.get("a"))
 }
 
-func TestProgramSound(t *testing.T) {
-	p := newProgram(nil)
+func TestProgramSend(t *testing.T) {
+	p := createProgram()
 
-	assert.Equal(t, 0, p.freq)
-	assert.False(t, p.recovered)
+	assert.Equal(t, p.sndCount, 0)
 
-	p.sound(1)
-	assert.Equal(t, 1, p.freq)
-	assert.False(t, p.recovered)
-
-	p.recover()
-	assert.Equal(t, 1, p.freq)
-	assert.True(t, p.recovered)
+	// TODO
+	p.send(1)
+	assert.Equal(t, p.sndCount, 1)
 }
 
 func TestProgramJump(t *testing.T) {
-	p := newProgram(nil)
+	p := createProgram()
 
 	assert.Equal(t, 0, p.pc)
 

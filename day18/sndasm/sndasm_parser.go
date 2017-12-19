@@ -15,26 +15,30 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 12, 55, 4,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 12, 65, 4,
 	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
-	8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 3, 2, 7, 2, 24, 10, 2,
-	12, 2, 14, 2, 27, 11, 2, 3, 3, 3, 3, 3, 3, 5, 3, 32, 10, 3, 3, 4, 3, 4,
-	3, 4, 3, 5, 3, 5, 3, 6, 3, 6, 3, 6, 3, 6, 3, 7, 3, 7, 3, 8, 3, 8, 3, 8,
-	3, 8, 3, 9, 3, 9, 3, 10, 3, 10, 3, 11, 3, 11, 3, 11, 2, 2, 12, 2, 4, 6,
-	8, 10, 12, 14, 16, 18, 20, 2, 5, 3, 2, 3, 4, 3, 2, 5, 8, 3, 2, 10, 11,
-	2, 47, 2, 25, 3, 2, 2, 2, 4, 31, 3, 2, 2, 2, 6, 33, 3, 2, 2, 2, 8, 36,
-	3, 2, 2, 2, 10, 38, 3, 2, 2, 2, 12, 42, 3, 2, 2, 2, 14, 44, 3, 2, 2, 2,
-	16, 48, 3, 2, 2, 2, 18, 50, 3, 2, 2, 2, 20, 52, 3, 2, 2, 2, 22, 24, 5,
-	4, 3, 2, 23, 22, 3, 2, 2, 2, 24, 27, 3, 2, 2, 2, 25, 23, 3, 2, 2, 2, 25,
-	26, 3, 2, 2, 2, 26, 3, 3, 2, 2, 2, 27, 25, 3, 2, 2, 2, 28, 32, 5, 6, 4,
-	2, 29, 32, 5, 10, 6, 2, 30, 32, 5, 14, 8, 2, 31, 28, 3, 2, 2, 2, 31, 29,
-	3, 2, 2, 2, 31, 30, 3, 2, 2, 2, 32, 5, 3, 2, 2, 2, 33, 34, 5, 8, 5, 2,
-	34, 35, 5, 20, 11, 2, 35, 7, 3, 2, 2, 2, 36, 37, 9, 2, 2, 2, 37, 9, 3,
-	2, 2, 2, 38, 39, 5, 12, 7, 2, 39, 40, 5, 18, 10, 2, 40, 41, 5, 20, 11,
-	2, 41, 11, 3, 2, 2, 2, 42, 43, 9, 3, 2, 2, 43, 13, 3, 2, 2, 2, 44, 45,
-	5, 16, 9, 2, 45, 46, 5, 20, 11, 2, 46, 47, 5, 20, 11, 2, 47, 15, 3, 2,
-	2, 2, 48, 49, 7, 9, 2, 2, 49, 17, 3, 2, 2, 2, 50, 51, 7, 10, 2, 2, 51,
-	19, 3, 2, 2, 2, 52, 53, 9, 4, 2, 2, 53, 21, 3, 2, 2, 2, 4, 25, 31,
+	8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13, 9,
+	13, 3, 2, 7, 2, 28, 10, 2, 12, 2, 14, 2, 31, 11, 2, 3, 3, 3, 3, 3, 3, 3,
+	3, 5, 3, 37, 10, 3, 3, 4, 3, 4, 3, 4, 3, 5, 3, 5, 3, 6, 3, 6, 3, 6, 3,
+	7, 3, 7, 3, 8, 3, 8, 3, 8, 3, 8, 3, 9, 3, 9, 3, 10, 3, 10, 3, 10, 3, 10,
+	3, 11, 3, 11, 3, 12, 3, 12, 3, 13, 3, 13, 3, 13, 2, 2, 14, 2, 4, 6, 8,
+	10, 12, 14, 16, 18, 20, 22, 24, 2, 4, 3, 2, 5, 8, 3, 2, 10, 11, 2, 56,
+	2, 29, 3, 2, 2, 2, 4, 36, 3, 2, 2, 2, 6, 38, 3, 2, 2, 2, 8, 41, 3, 2, 2,
+	2, 10, 43, 3, 2, 2, 2, 12, 46, 3, 2, 2, 2, 14, 48, 3, 2, 2, 2, 16, 52,
+	3, 2, 2, 2, 18, 54, 3, 2, 2, 2, 20, 58, 3, 2, 2, 2, 22, 60, 3, 2, 2, 2,
+	24, 62, 3, 2, 2, 2, 26, 28, 5, 4, 3, 2, 27, 26, 3, 2, 2, 2, 28, 31, 3,
+	2, 2, 2, 29, 27, 3, 2, 2, 2, 29, 30, 3, 2, 2, 2, 30, 3, 3, 2, 2, 2, 31,
+	29, 3, 2, 2, 2, 32, 37, 5, 6, 4, 2, 33, 37, 5, 10, 6, 2, 34, 37, 5, 14,
+	8, 2, 35, 37, 5, 18, 10, 2, 36, 32, 3, 2, 2, 2, 36, 33, 3, 2, 2, 2, 36,
+	34, 3, 2, 2, 2, 36, 35, 3, 2, 2, 2, 37, 5, 3, 2, 2, 2, 38, 39, 5, 8, 5,
+	2, 39, 40, 5, 22, 12, 2, 40, 7, 3, 2, 2, 2, 41, 42, 7, 4, 2, 2, 42, 9,
+	3, 2, 2, 2, 43, 44, 5, 12, 7, 2, 44, 45, 5, 24, 13, 2, 45, 11, 3, 2, 2,
+	2, 46, 47, 7, 3, 2, 2, 47, 13, 3, 2, 2, 2, 48, 49, 5, 16, 9, 2, 49, 50,
+	5, 22, 12, 2, 50, 51, 5, 24, 13, 2, 51, 15, 3, 2, 2, 2, 52, 53, 9, 2, 2,
+	2, 53, 17, 3, 2, 2, 2, 54, 55, 5, 20, 11, 2, 55, 56, 5, 24, 13, 2, 56,
+	57, 5, 24, 13, 2, 57, 19, 3, 2, 2, 2, 58, 59, 7, 9, 2, 2, 59, 21, 3, 2,
+	2, 2, 60, 61, 7, 10, 2, 2, 61, 23, 3, 2, 2, 2, 62, 63, 9, 3, 2, 2, 63,
+	25, 3, 2, 2, 2, 4, 29, 36,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
@@ -47,9 +51,9 @@ var symbolicNames = []string{
 }
 
 var ruleNames = []string{
-	"code", "instruction", "unaryExpression", "unaryInstruction", "binaryRegExpression",
-	"binaryRegInstruction", "binaryExpression", "binaryInstruction", "reg",
-	"regOrValue",
+	"code", "instruction", "unaryRegExpression", "unaryRegInstruction", "unaryExpression",
+	"unaryInstruction", "binaryRegExpression", "binaryRegInstruction", "binaryExpression",
+	"binaryInstruction", "reg", "regOrValue",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -96,14 +100,16 @@ const (
 const (
 	SndAsmParserRULE_code                 = 0
 	SndAsmParserRULE_instruction          = 1
-	SndAsmParserRULE_unaryExpression      = 2
-	SndAsmParserRULE_unaryInstruction     = 3
-	SndAsmParserRULE_binaryRegExpression  = 4
-	SndAsmParserRULE_binaryRegInstruction = 5
-	SndAsmParserRULE_binaryExpression     = 6
-	SndAsmParserRULE_binaryInstruction    = 7
-	SndAsmParserRULE_reg                  = 8
-	SndAsmParserRULE_regOrValue           = 9
+	SndAsmParserRULE_unaryRegExpression   = 2
+	SndAsmParserRULE_unaryRegInstruction  = 3
+	SndAsmParserRULE_unaryExpression      = 4
+	SndAsmParserRULE_unaryInstruction     = 5
+	SndAsmParserRULE_binaryRegExpression  = 6
+	SndAsmParserRULE_binaryRegInstruction = 7
+	SndAsmParserRULE_binaryExpression     = 8
+	SndAsmParserRULE_binaryInstruction    = 9
+	SndAsmParserRULE_reg                  = 10
+	SndAsmParserRULE_regOrValue           = 11
 )
 
 // ICodeContext is an interface to support dynamic dispatch.
@@ -209,17 +215,17 @@ func (p *SndAsmParser) Code() (localctx ICodeContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(23)
+	p.SetState(27)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<SndAsmParserSnd)|(1<<SndAsmParserRcv)|(1<<SndAsmParserSet)|(1<<SndAsmParserAdd)|(1<<SndAsmParserMul)|(1<<SndAsmParserMod)|(1<<SndAsmParserJgz))) != 0 {
 		{
-			p.SetState(20)
+			p.SetState(24)
 			p.Instruction()
 		}
 
-		p.SetState(25)
+		p.SetState(29)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -264,6 +270,16 @@ func NewInstructionContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 }
 
 func (s *InstructionContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *InstructionContext) UnaryRegExpression() IUnaryRegExpressionContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IUnaryRegExpressionContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IUnaryRegExpressionContext)
+}
 
 func (s *InstructionContext) UnaryExpression() IUnaryExpressionContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IUnaryExpressionContext)(nil)).Elem(), 0)
@@ -335,33 +351,242 @@ func (p *SndAsmParser) Instruction() (localctx IInstructionContext) {
 		}
 	}()
 
-	p.SetState(29)
+	p.SetState(34)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
-	case SndAsmParserSnd, SndAsmParserRcv:
+	case SndAsmParserRcv:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(26)
+			p.SetState(30)
+			p.UnaryRegExpression()
+		}
+
+	case SndAsmParserSnd:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(31)
 			p.UnaryExpression()
 		}
 
 	case SndAsmParserSet, SndAsmParserAdd, SndAsmParserMul, SndAsmParserMod:
-		p.EnterOuterAlt(localctx, 2)
+		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(27)
+			p.SetState(32)
 			p.BinaryRegExpression()
 		}
 
 	case SndAsmParserJgz:
-		p.EnterOuterAlt(localctx, 3)
+		p.EnterOuterAlt(localctx, 4)
 		{
-			p.SetState(28)
+			p.SetState(33)
 			p.BinaryExpression()
 		}
 
 	default:
 		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+	}
+
+	return localctx
+}
+
+// IUnaryRegExpressionContext is an interface to support dynamic dispatch.
+type IUnaryRegExpressionContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsUnaryRegExpressionContext differentiates from other interfaces.
+	IsUnaryRegExpressionContext()
+}
+
+type UnaryRegExpressionContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyUnaryRegExpressionContext() *UnaryRegExpressionContext {
+	var p = new(UnaryRegExpressionContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = SndAsmParserRULE_unaryRegExpression
+	return p
+}
+
+func (*UnaryRegExpressionContext) IsUnaryRegExpressionContext() {}
+
+func NewUnaryRegExpressionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *UnaryRegExpressionContext {
+	var p = new(UnaryRegExpressionContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = SndAsmParserRULE_unaryRegExpression
+
+	return p
+}
+
+func (s *UnaryRegExpressionContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *UnaryRegExpressionContext) UnaryRegInstruction() IUnaryRegInstructionContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IUnaryRegInstructionContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IUnaryRegInstructionContext)
+}
+
+func (s *UnaryRegExpressionContext) Reg() IRegContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IRegContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IRegContext)
+}
+
+func (s *UnaryRegExpressionContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *UnaryRegExpressionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *UnaryRegExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SndAsmListener); ok {
+		listenerT.EnterUnaryRegExpression(s)
+	}
+}
+
+func (s *UnaryRegExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SndAsmListener); ok {
+		listenerT.ExitUnaryRegExpression(s)
+	}
+}
+
+func (p *SndAsmParser) UnaryRegExpression() (localctx IUnaryRegExpressionContext) {
+	localctx = NewUnaryRegExpressionContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 4, SndAsmParserRULE_unaryRegExpression)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(36)
+		p.UnaryRegInstruction()
+	}
+	{
+		p.SetState(37)
+		p.Reg()
+	}
+
+	return localctx
+}
+
+// IUnaryRegInstructionContext is an interface to support dynamic dispatch.
+type IUnaryRegInstructionContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsUnaryRegInstructionContext differentiates from other interfaces.
+	IsUnaryRegInstructionContext()
+}
+
+type UnaryRegInstructionContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyUnaryRegInstructionContext() *UnaryRegInstructionContext {
+	var p = new(UnaryRegInstructionContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = SndAsmParserRULE_unaryRegInstruction
+	return p
+}
+
+func (*UnaryRegInstructionContext) IsUnaryRegInstructionContext() {}
+
+func NewUnaryRegInstructionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *UnaryRegInstructionContext {
+	var p = new(UnaryRegInstructionContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = SndAsmParserRULE_unaryRegInstruction
+
+	return p
+}
+
+func (s *UnaryRegInstructionContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *UnaryRegInstructionContext) Rcv() antlr.TerminalNode {
+	return s.GetToken(SndAsmParserRcv, 0)
+}
+
+func (s *UnaryRegInstructionContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *UnaryRegInstructionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *UnaryRegInstructionContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SndAsmListener); ok {
+		listenerT.EnterUnaryRegInstruction(s)
+	}
+}
+
+func (s *UnaryRegInstructionContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SndAsmListener); ok {
+		listenerT.ExitUnaryRegInstruction(s)
+	}
+}
+
+func (p *SndAsmParser) UnaryRegInstruction() (localctx IUnaryRegInstructionContext) {
+	localctx = NewUnaryRegInstructionContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 6, SndAsmParserRULE_unaryRegInstruction)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(39)
+		p.Match(SndAsmParserRcv)
 	}
 
 	return localctx
@@ -447,7 +672,7 @@ func (s *UnaryExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *SndAsmParser) UnaryExpression() (localctx IUnaryExpressionContext) {
 	localctx = NewUnaryExpressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, SndAsmParserRULE_unaryExpression)
+	p.EnterRule(localctx, 8, SndAsmParserRULE_unaryExpression)
 
 	defer func() {
 		p.ExitRule()
@@ -467,11 +692,11 @@ func (p *SndAsmParser) UnaryExpression() (localctx IUnaryExpressionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(31)
+		p.SetState(41)
 		p.UnaryInstruction()
 	}
 	{
-		p.SetState(32)
+		p.SetState(42)
 		p.RegOrValue()
 	}
 
@@ -520,10 +745,6 @@ func (s *UnaryInstructionContext) Snd() antlr.TerminalNode {
 	return s.GetToken(SndAsmParserSnd, 0)
 }
 
-func (s *UnaryInstructionContext) Rcv() antlr.TerminalNode {
-	return s.GetToken(SndAsmParserRcv, 0)
-}
-
 func (s *UnaryInstructionContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -546,8 +767,7 @@ func (s *UnaryInstructionContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *SndAsmParser) UnaryInstruction() (localctx IUnaryInstructionContext) {
 	localctx = NewUnaryInstructionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, SndAsmParserRULE_unaryInstruction)
-	var _la int
+	p.EnterRule(localctx, 10, SndAsmParserRULE_unaryInstruction)
 
 	defer func() {
 		p.ExitRule()
@@ -567,15 +787,8 @@ func (p *SndAsmParser) UnaryInstruction() (localctx IUnaryInstructionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(34)
-		_la = p.GetTokenStream().LA(1)
-
-		if !(_la == SndAsmParserSnd || _la == SndAsmParserRcv) {
-			p.GetErrorHandler().RecoverInline(p)
-		} else {
-			p.GetErrorHandler().ReportMatch(p)
-			p.Consume()
-		}
+		p.SetState(44)
+		p.Match(SndAsmParserSnd)
 	}
 
 	return localctx
@@ -671,7 +884,7 @@ func (s *BinaryRegExpressionContext) ExitRule(listener antlr.ParseTreeListener) 
 
 func (p *SndAsmParser) BinaryRegExpression() (localctx IBinaryRegExpressionContext) {
 	localctx = NewBinaryRegExpressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, SndAsmParserRULE_binaryRegExpression)
+	p.EnterRule(localctx, 12, SndAsmParserRULE_binaryRegExpression)
 
 	defer func() {
 		p.ExitRule()
@@ -691,15 +904,15 @@ func (p *SndAsmParser) BinaryRegExpression() (localctx IBinaryRegExpressionConte
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(36)
+		p.SetState(46)
 		p.BinaryRegInstruction()
 	}
 	{
-		p.SetState(37)
+		p.SetState(47)
 		p.Reg()
 	}
 	{
-		p.SetState(38)
+		p.SetState(48)
 		p.RegOrValue()
 	}
 
@@ -782,7 +995,7 @@ func (s *BinaryRegInstructionContext) ExitRule(listener antlr.ParseTreeListener)
 
 func (p *SndAsmParser) BinaryRegInstruction() (localctx IBinaryRegInstructionContext) {
 	localctx = NewBinaryRegInstructionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, SndAsmParserRULE_binaryRegInstruction)
+	p.EnterRule(localctx, 14, SndAsmParserRULE_binaryRegInstruction)
 	var _la int
 
 	defer func() {
@@ -803,7 +1016,7 @@ func (p *SndAsmParser) BinaryRegInstruction() (localctx IBinaryRegInstructionCon
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(40)
+		p.SetState(50)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<SndAsmParserSet)|(1<<SndAsmParserAdd)|(1<<SndAsmParserMul)|(1<<SndAsmParserMod))) != 0) {
@@ -910,7 +1123,7 @@ func (s *BinaryExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *SndAsmParser) BinaryExpression() (localctx IBinaryExpressionContext) {
 	localctx = NewBinaryExpressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 12, SndAsmParserRULE_binaryExpression)
+	p.EnterRule(localctx, 16, SndAsmParserRULE_binaryExpression)
 
 	defer func() {
 		p.ExitRule()
@@ -930,15 +1143,15 @@ func (p *SndAsmParser) BinaryExpression() (localctx IBinaryExpressionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(42)
+		p.SetState(52)
 		p.BinaryInstruction()
 	}
 	{
-		p.SetState(43)
+		p.SetState(53)
 		p.RegOrValue()
 	}
 	{
-		p.SetState(44)
+		p.SetState(54)
 		p.RegOrValue()
 	}
 
@@ -1009,7 +1222,7 @@ func (s *BinaryInstructionContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *SndAsmParser) BinaryInstruction() (localctx IBinaryInstructionContext) {
 	localctx = NewBinaryInstructionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 14, SndAsmParserRULE_binaryInstruction)
+	p.EnterRule(localctx, 18, SndAsmParserRULE_binaryInstruction)
 
 	defer func() {
 		p.ExitRule()
@@ -1029,7 +1242,7 @@ func (p *SndAsmParser) BinaryInstruction() (localctx IBinaryInstructionContext) 
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(46)
+		p.SetState(56)
 		p.Match(SndAsmParserJgz)
 	}
 
@@ -1100,7 +1313,7 @@ func (s *RegContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *SndAsmParser) Reg() (localctx IRegContext) {
 	localctx = NewRegContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 16, SndAsmParserRULE_reg)
+	p.EnterRule(localctx, 20, SndAsmParserRULE_reg)
 
 	defer func() {
 		p.ExitRule()
@@ -1120,7 +1333,7 @@ func (p *SndAsmParser) Reg() (localctx IRegContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(48)
+		p.SetState(58)
 		p.Match(SndAsmParserReg)
 	}
 
@@ -1195,7 +1408,7 @@ func (s *RegOrValueContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *SndAsmParser) RegOrValue() (localctx IRegOrValueContext) {
 	localctx = NewRegOrValueContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 18, SndAsmParserRULE_regOrValue)
+	p.EnterRule(localctx, 22, SndAsmParserRULE_regOrValue)
 	var _la int
 
 	defer func() {
@@ -1216,7 +1429,7 @@ func (p *SndAsmParser) RegOrValue() (localctx IRegOrValueContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(50)
+		p.SetState(60)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == SndAsmParserReg || _la == SndAsmParserValue) {

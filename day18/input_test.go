@@ -25,6 +25,11 @@ func TestParse(t *testing.T) {
 	code := parse(testInput)
 	assert.Len(t, code, 10)
 
-	p := newProgram(code)
-	p.run()
+	// chan0 := make(chan int, 100)
+	// chan1 := make(chan int, 100)
+	//
+	// p0 := newProgram(0, code, chan1, chan0)
+	// p1 := newProgram(1, code, chan0, chan1)
+	//
+	// p0.run(p1)
 }

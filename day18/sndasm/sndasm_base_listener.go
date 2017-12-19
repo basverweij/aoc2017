@@ -32,6 +32,18 @@ func (s *BaseSndAsmListener) EnterInstruction(ctx *InstructionContext) {}
 // ExitInstruction is called when production instruction is exited.
 func (s *BaseSndAsmListener) ExitInstruction(ctx *InstructionContext) {}
 
+// EnterUnaryRegExpression is called when production unaryRegExpression is entered.
+func (s *BaseSndAsmListener) EnterUnaryRegExpression(ctx *UnaryRegExpressionContext) {}
+
+// ExitUnaryRegExpression is called when production unaryRegExpression is exited.
+func (s *BaseSndAsmListener) ExitUnaryRegExpression(ctx *UnaryRegExpressionContext) {}
+
+// EnterUnaryRegInstruction is called when production unaryRegInstruction is entered.
+func (s *BaseSndAsmListener) EnterUnaryRegInstruction(ctx *UnaryRegInstructionContext) {}
+
+// ExitUnaryRegInstruction is called when production unaryRegInstruction is exited.
+func (s *BaseSndAsmListener) ExitUnaryRegInstruction(ctx *UnaryRegInstructionContext) {}
+
 // EnterUnaryExpression is called when production unaryExpression is entered.
 func (s *BaseSndAsmListener) EnterUnaryExpression(ctx *UnaryExpressionContext) {}
 

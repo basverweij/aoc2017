@@ -13,6 +13,12 @@ type SndAsmListener interface {
 	// EnterInstruction is called when entering the instruction production.
 	EnterInstruction(c *InstructionContext)
 
+	// EnterUnaryRegExpression is called when entering the unaryRegExpression production.
+	EnterUnaryRegExpression(c *UnaryRegExpressionContext)
+
+	// EnterUnaryRegInstruction is called when entering the unaryRegInstruction production.
+	EnterUnaryRegInstruction(c *UnaryRegInstructionContext)
+
 	// EnterUnaryExpression is called when entering the unaryExpression production.
 	EnterUnaryExpression(c *UnaryExpressionContext)
 
@@ -42,6 +48,12 @@ type SndAsmListener interface {
 
 	// ExitInstruction is called when exiting the instruction production.
 	ExitInstruction(c *InstructionContext)
+
+	// ExitUnaryRegExpression is called when exiting the unaryRegExpression production.
+	ExitUnaryRegExpression(c *UnaryRegExpressionContext)
+
+	// ExitUnaryRegInstruction is called when exiting the unaryRegInstruction production.
+	ExitUnaryRegInstruction(c *UnaryRegInstructionContext)
 
 	// ExitUnaryExpression is called when exiting the unaryExpression production.
 	ExitUnaryExpression(c *UnaryExpressionContext)

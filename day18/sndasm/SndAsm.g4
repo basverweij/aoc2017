@@ -2,11 +2,15 @@ grammar SndAsm;
 
 code : instruction* ;
 
-instruction : unaryExpression | binaryRegExpression | binaryExpression;
+instruction : unaryRegExpression | unaryExpression | binaryRegExpression | binaryExpression;
+
+unaryRegExpression : unaryRegInstruction reg ;
+
+unaryRegInstruction : Rcv ;
 
 unaryExpression : unaryInstruction regOrValue ;
 
-unaryInstruction : Snd | Rcv ;
+unaryInstruction : Snd ;
 
 binaryRegExpression : binaryRegInstruction reg regOrValue ;
 
