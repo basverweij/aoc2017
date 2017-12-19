@@ -20,7 +20,9 @@ func createTubes() [][]byte {
 
 func TestFollow(t *testing.T) {
 	tubes := createTubes()
-	assert.Equal(t, "ABCDEF", follow(tubes))
+	s, n := follow(tubes)
+	assert.Equal(t, "ABCDEF", s)
+	assert.Equal(t, 38, n)
 }
 
 func TestStart(t *testing.T) {

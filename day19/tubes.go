@@ -10,13 +10,15 @@ func isLetter(t byte) bool {
 	return t >= 'A' && t <= 'Z'
 }
 
-func follow(tubes [][]byte) string {
+func follow(tubes [][]byte) (string, int) {
 	s := ""
+	n := 0
 
 	pos := findStart(tubes)
 	dir := down
 
 	for dir != none {
+		n++
 		pos.move(dir)
 
 		t := tubes[pos.y][pos.x]
@@ -65,7 +67,7 @@ func follow(tubes [][]byte) string {
 		dir = none
 	}
 
-	return s
+	return s, n
 }
 
 func findStart(tubes [][]byte) *position {
