@@ -1,6 +1,6 @@
 package main
 
-var inputParticles = []*particle{
+var inputParticles = []particle{
 	{p: d3{-1021, -2406, 1428}, v: d3{11, 24, -73}, a: d3{4, 9, 0}},
 	{p: d3{-181, -26, 548}, v: d3{11, 73, -8}, a: d3{0, -7, -2}},
 	{p: d3{-2101, -2706, -1112}, v: d3{-19, -66, 75}, a: d3{12, 19, -2}},
@@ -1001,4 +1001,14 @@ var inputParticles = []*particle{
 	{p: d3{172, -2059, 2245}, v: d3{24, -295, 318}, a: d3{0, 21, -24}},
 	{p: d3{88, 1541, -2567}, v: d3{12, 220, -369}, a: d3{-3, -15, 29}},
 	{p: d3{-886, 2415, 982}, v: d3{-129, 344, 142}, a: d3{9, -29, -12}},
+}
+
+func input() []*particle {
+	ps := make([]*particle, len(inputParticles))
+
+	for i, p := range inputParticles {
+		ps[i] = &particle{p: p.p, v: p.v, a: p.a}
+	}
+
+	return ps
 }

@@ -5,7 +5,8 @@ type d3 struct {
 }
 
 type particle struct {
-	p, v, a d3
+	p, v, a   d3
+	destroyed bool
 }
 
 func (p particle) originVelocity(j trajectory, t int) int {
