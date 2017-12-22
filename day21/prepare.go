@@ -33,8 +33,8 @@ var flips = map[string]func(*bitgrid, int, int) (int, int, bool){
 	"both": func(b *bitgrid, x, y int) (int, int, bool) { return b.size - 1 - x, b.size - 1 - y, true },
 }
 
-func allTransforms(source *bitgrid) map[uint][]*bitgrid {
-	all := make(map[uint][]*bitgrid)
+func allTransforms(source *bitgrid) map[string][]*bitgrid {
+	all := make(map[string][]*bitgrid)
 
 	for _, r := range rotations {
 		for _, f := range flips {

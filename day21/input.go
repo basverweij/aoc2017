@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var rawStart = ".#./..#/###"
 
@@ -117,11 +119,11 @@ var rawRules = map[string]string{
 
 type sizedKey struct {
 	size int
-	key  uint
+	key  string
 }
 
 func (sk sizedKey) String() string {
-	return fmt.Sprintf("%1d-%03d", sk.size, sk.key)
+	return fmt.Sprintf("%1d-%s", sk.size, sk.key)
 }
 
 func parseRules(rawRules map[string]string) map[sizedKey]*bitgrid {

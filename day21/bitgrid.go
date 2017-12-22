@@ -2,21 +2,26 @@ package main
 
 import (
 	"fmt"
-	"math/bits"
-	"strconv"
+	"math/big"
 	"strings"
 )
 
 type bitgrid struct {
 	size int
-	mask []uint
+	mask []*big.Int
 }
 
 func newBitgrid(size int) *bitgrid {
-	return &bitgrid{
+	b := &bitgrid{
 		size: size,
-		mask: make([]uint, size),
+		mask: make([]*big.Int, size),
 	}
+
+	for i := range b.mask {
+		b.mask[i] = new(big.Int)
+	}
+
+	return b
 }
 
 func (b *bitgrid) String() string {
@@ -24,8 +29,8 @@ func (b *bitgrid) String() string {
 
 	for i, m := range b.mask {
 		b := fmt.Sprintf(
-			fmt.Sprintf("%%0%ds", b.size),
-			strconv.FormatUint(bits.Reverse64(uint64(m))>>uint(64-b.size), 2))
+			fmt.Sprintf("%%0%db", b.size),
+			reverse(m, b.size))
 
 		s[i] = strings.Replace(strings.Replace(b, "0", ".", -1), "1", "#", -1)
 	}
@@ -33,53 +38,67 @@ func (b *bitgrid) String() string {
 	return strings.Join(s, "/")
 }
 
-const uint1 = uint(1)
+var bigint1 = big.NewInt(1)
 
 func (b *bitgrid) set(x, y int, mask bool) {
+	var m uint
 	if mask {
-		b.mask[y] |= uint1 << uint(x)
-	} else {
-		b.mask[y] &= ^(uint1 << uint(x))
+		m = 1
 	}
+
+	b.mask[y].SetBit(b.mask[y], x, m)
 }
 
 func (b *bitgrid) get(x, y int) bool {
-	return (b.mask[y]>>uint(x))&uint1 == uint1
+	return b.mask[y].Bit(x) == 1
 }
 
-func (b *bitgrid) key(x, y, size int) uint {
-	var key uint
-	mask := (uint1 << uint(size)) - uint1
+func (b *bitgrid) key(x, y, size int) string {
+	mask := new(big.Int)
+	mask.Lsh(bigint1, uint(size))
+	mask.Sub(mask, bigint1)
 
+	key := new(big.Int)
 	for i := y + size - 1; i >= y; i-- {
 		if i < y+size-1 {
-			key <<= uint(size)
+			key.Lsh(key, uint(size))
 		}
 
-		key |= (b.mask[i] >> uint(x)) & mask
+		m := new(big.Int)
+		m.Rsh(b.mask[i], uint(x))
+		m.And(m, mask)
+
+		key.Or(key, m)
 	}
 
-	return key
+	return key.Text(16)
 }
 
 func (b *bitgrid) countOn() int {
 	c := 0
-	for i := 0; i < b.size; i++ {
-		for j := 0; j < b.size; j++ {
-			if b.get(i, j) {
-				c++
-			}
-		}
+	for j := 0; j < b.size; j++ {
+		c += bitCount(b.mask[j])
 	}
 
 	return c
 }
 
 func (b *bitgrid) copyFrom(from *bitgrid, x, y int) {
-	mask := ^(((uint1 << uint(from.size)) - uint1) << uint(x))
+	fromMask := new(big.Int)
+	fromMask.Lsh(bigint1, uint(from.size))
+	fromMask.Sub(fromMask, bigint1)
+	fromMask.Lsh(fromMask, uint(x))
+
+	mask := new(big.Int)
+	mask.Lsh(bigint1, uint(b.size))
+	mask.Sub(mask, bigint1)
+	mask.Xor(mask, fromMask)
 
 	for j := 0; j < from.size; j++ {
-		b.mask[y+j] &= mask
-		b.mask[y+j] |= from.mask[j] << uint(x)
+		m := new(big.Int)
+		m.Lsh(from.mask[j], uint(x))
+
+		b.mask[y+j].And(b.mask[y+j], mask)
+		b.mask[y+j].Or(b.mask[y+j], m)
 	}
 }

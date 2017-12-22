@@ -17,7 +17,7 @@ func TestSetGetKeyString(t *testing.T) {
 	assert.False(t, b.get(0, 1))
 	assert.False(t, b.get(1, 0))
 	assert.False(t, b.get(1, 1))
-	assert.EqualValues(t, 0, b.key(0, 0, 2))
+	assert.EqualValues(t, "0", b.key(0, 0, 2))
 	assert.Equal(t, "../..", b.String())
 
 	b.set(0, 0, true)
@@ -25,7 +25,7 @@ func TestSetGetKeyString(t *testing.T) {
 	assert.False(t, b.get(0, 1))
 	assert.False(t, b.get(1, 0))
 	assert.False(t, b.get(1, 1))
-	assert.EqualValues(t, 1, b.key(0, 0, 2))
+	assert.EqualValues(t, "1", b.key(0, 0, 2))
 	assert.Equal(t, "#./..", b.String())
 
 	b.set(0, 0, false)
@@ -34,7 +34,7 @@ func TestSetGetKeyString(t *testing.T) {
 	assert.True(t, b.get(0, 1))
 	assert.False(t, b.get(1, 0))
 	assert.False(t, b.get(1, 1))
-	assert.EqualValues(t, 4, b.key(0, 0, 2))
+	assert.EqualValues(t, "4", b.key(0, 0, 2))
 	assert.Equal(t, "../#.", b.String())
 
 	b.set(0, 1, false)
@@ -43,7 +43,7 @@ func TestSetGetKeyString(t *testing.T) {
 	assert.False(t, b.get(0, 1))
 	assert.True(t, b.get(1, 0))
 	assert.False(t, b.get(1, 1))
-	assert.EqualValues(t, 2, b.key(0, 0, 2))
+	assert.EqualValues(t, "2", b.key(0, 0, 2))
 	assert.Equal(t, ".#/..", b.String())
 
 	b.set(1, 0, false)
@@ -52,7 +52,7 @@ func TestSetGetKeyString(t *testing.T) {
 	assert.False(t, b.get(0, 1))
 	assert.False(t, b.get(1, 0))
 	assert.True(t, b.get(1, 1))
-	assert.EqualValues(t, 8, b.key(0, 0, 2))
+	assert.EqualValues(t, "8", b.key(0, 0, 2))
 	assert.Equal(t, "../.#", b.String())
 
 	b.set(1, 1, false)
@@ -60,7 +60,7 @@ func TestSetGetKeyString(t *testing.T) {
 	assert.False(t, b.get(0, 1))
 	assert.False(t, b.get(1, 0))
 	assert.False(t, b.get(1, 1))
-	assert.EqualValues(t, 0, b.key(0, 0, 2))
+	assert.EqualValues(t, "0", b.key(0, 0, 2))
 	assert.Equal(t, "../..", b.String())
 }
 
