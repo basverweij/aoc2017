@@ -29,43 +29,28 @@ func TestVirusString(t *testing.T) {
 func TestVirusBurst(t *testing.T) {
 	v := newVirus(parse(rawTestInput))
 
-	for i := 0; i < 7; i++ {
+	for i := 0; i < 2; i++ {
 		v.burst()
 	}
 
-	assert.Equal(t, 5, v.infections)
+	assert.Equal(t, 0, v.infections)
 
 	assert.Equal(t, " . . . . . . . . . \n"+
 		" . . . . . . . . . \n"+
 		" . . . . . . . . . \n"+
-		" . . # .[.]# . . . \n"+
-		" . . # # # . . . . \n"+
+		" . . .[.]. # . . . \n"+
+		" . . . F W . . . . \n"+
 		" . . . . . . . . . \n"+
 		" . . . . . . . . . \n"+
 		" . . . . . . . . . \n"+
 		" . . . . . . . . . ",
 		v.String(9))
 
-	for i := 0; i < 63; i++ {
+	v = newVirus(parse(rawTestInput))
+
+	for i := 0; i < 10000000; i++ {
 		v.burst()
 	}
 
-	assert.Equal(t, 41, v.infections)
-
-	assert.Equal(t, " . . . . . # # . . \n"+
-		" . . . . # . . # . \n"+
-		" . . . # . . . . # \n"+
-		" . . # . #[.]. . # \n"+
-		" . . # . # . . # . \n"+
-		" . . . . . # # . . \n"+
-		" . . . . . . . . . \n"+
-		" . . . . . . . . . \n"+
-		" . . . . . . . . . ",
-		v.String(9))
-
-	for i := 0; i < 9930; i++ {
-		v.burst()
-	}
-
-	assert.Equal(t, 5587, v.infections)
+	assert.Equal(t, 2511944, v.infections)
 }
