@@ -30,20 +30,21 @@ func (o opcode) String() string {
 }
 
 type regOrConst struct {
-	reg  rune
-	cnst int
+	isReg bool
+	reg   int
+	cnst  int
 }
 
 func (roc *regOrConst) String() string {
 	if roc.reg != 0 {
-		return string(roc.reg)
+		return string(rune(roc.reg) + 'a')
 	}
 
 	return strconv.Itoa(roc.cnst)
 }
 
 func (roc *regOrConst) val(p *program) int {
-	if roc.reg != 0 {
+	if roc.isReg {
 		return p.regs[roc.reg]
 	}
 

@@ -90,7 +90,8 @@ func (l *instructionListener) ExitInstruction(ctx *coasm.InstructionContext) {
 func (l *instructionListener) EnterRegOrConst(ctx *coasm.RegOrConstContext) {
 	roc := &regOrConst{}
 	if ctx.Reg() != nil {
-		roc.reg = rune(ctx.Reg().GetText()[0])
+		roc.isReg = true
+		roc.reg = int(rune(ctx.Reg().GetText()[0]) - 'a')
 	} else if ctx.Const() != nil {
 		roc.cnst, _ = strconv.Atoi(ctx.Const().GetText())
 	} else {
