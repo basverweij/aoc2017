@@ -9,5 +9,5 @@ import (
 func TestStrongestBridge(t *testing.T) {
 	s := testInput.strongestBridge()
 
-	assert.Equal(t, 31, s)
+	assert.Equal(t, 19, s)
 }

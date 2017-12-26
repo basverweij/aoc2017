@@ -9,37 +9,41 @@ func (cs components) strongestBridge() int {
 		}
 	}
 
-	return cs.strongestBridgeFrom(0, lengths, make([]direction, len(cs)), 0)
-}
-
-func (cs components) strongestBridgeFrom(length int, lengths map[int][]int, usedBefore []direction, strengthBefore int) int {
-	used := make([]direction, len(cs))
-	copy(used, usedBefore)
-
-	s := strengthBefore
-	for _, i := range lengths[length] {
-		if used[i] != none {
-			continue
-		}
-
-		if cs[i].portA == length {
-			used[i] = fromA
-			s = max(s, cs.strongestBridgeFrom(cs[i].portB, lengths, used, strengthBefore+cs[i].strength()))
-		} else if cs[i].portB == length {
-			used[i] = fromB
-			s = max(s, cs.strongestBridgeFrom(cs[i].portA, lengths, used, strengthBefore+cs[i].strength()))
-		}
-
-		used[i] = none
-	}
+	s, _ := cs.strongestBridgeFrom(0, lengths, make([]direction, len(cs)), 0, 0)
 
 	return s
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
+func (cs components) strongestBridgeFrom(fromLength int, lengths map[int][]int, usedBefore []direction, strengthBefore, lengthBefore int) (strength, length int) {
+	used := make([]direction, len(cs))
+	copy(used, usedBefore)
+
+	strength = strengthBefore
+	length = lengthBefore
+
+	var s, l int
+	for _, i := range lengths[fromLength] {
+		if used[i] != none {
+			continue
+		}
+
+		if cs[i].portA == fromLength {
+			used[i] = fromA
+			s, l = cs.strongestBridgeFrom(cs[i].portB, lengths, used, strengthBefore+cs[i].strength(), lengthBefore+1)
+		} else { // cs[i].portB == fromLength
+			used[i] = fromB
+			s, l = cs.strongestBridgeFrom(cs[i].portA, lengths, used, strengthBefore+cs[i].strength(), lengthBefore+1)
+		}
+
+		used[i] = none
+
+		if l > length {
+			length = l
+			strength = s
+		} else if l == length && s > strength {
+			strength = s
+		}
 	}
 
-	return b
+	return
 }
